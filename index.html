@@ -8,35 +8,42 @@
       src="https://kit.fontawesome.com/099ac854b2.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair">
     <title>ArtisanAvenue 10</title>
   </head>
   <body>
     <div class="container">
+      <div class="logo-header">
+        <img src="/img/MadeGoodLogo.png" alt="">
+      </div>
       <nav class="navbar">
-        <div class="searchcontainer">
+        <div class="search-container">
           <button type="submit" class="search-button">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
           <input type="text" placeholder="Search ..." />
         </div>
-        <ul>
-          <li class="navbaritem"><a href=""> Home</a></li>
-          <li class="navbaritem dropdown">
+        <div class="navbaritem-container">
+          <a href=""> Home</a>
+          <div class="line"></div>
+          <div class="dropdown">
             <a href="">Shop</a>
-            <ul>
-              <li class="dropdownitem"><a href="">AllProducts</a></li>
-              <li class="dropdownitem"><a href="">DIY Gifts</a></li>
-              <li class="dropdownitem"><a href="">Keychains</a></li>
-              <li class="dropdownitem"><a href="">Paintings</a></li>
-              <li class="dropdownitem"><a href="">Toys</a></li>
-              <li class="dropdownitem"><a href="">Lamp</a></li>
-              <li class="dropdownitem"><a href="">Bag</a></li>
-            </ul>
-          </li>
-          <li class="navbaritem"><a href="">About</a></li>
-          <li class="navbaritem"><a href="">Contact</a></li>
-        </ul>
+            <div class="navbaritem-dropdown">
+              <a href="">All Products</a>
+              <a href="">DIY Gifts</a>
+              <a href="">Keychains</a>
+              <a href="">Paintings</a>
+              <a href="">Toys</a>
+              <a href="">Lamp</a>
+              <a href="">Bag</a>
+            </div>
+          </div>
+          <div class="line"></div>
+          <a href="">About</a>
+          <div class="line"></div>
+          <a href="">Contact</a>
+        </div>
       </nav>
       <main class="maincontent">
         <div class="imageslider">
