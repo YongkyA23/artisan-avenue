@@ -18,6 +18,7 @@
   border-left: 0px;
   border-right: 0px;
   padding: 20px 0px;
+  margin-top: 10px;
   border-style: solid;
   border-color: black;
 }
@@ -74,7 +75,48 @@
   display: block;
 }
 
+/* login + cart */
+.right-navbar {
+  display: flex;
+  justify-content: space-evenly;
+  width: 180px;
+}
+
+.login {
+  display: flex;
+  justify-content: space-evenly;
+  width: 70px;
+  vertical-align: middle;
+}
+
+/* main content */
+.maincontent {
+  margin: 20px 100px;
+}
+
 /* image carousel */
 .imageslider {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.carousel {
+  overflow: hidden;
+}
+
+.carousel-container{
+  height: 590px;
+  position: relative;
+}
+
+.carousel-image{
+  width: 1200px;
+  float: left;
+}
+
+.imageslider button {
+  border: 0px;
+  background-color: transparent;
 }
