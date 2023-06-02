@@ -102,13 +102,15 @@
   margin-top: 25px;
 }
 
-.carousel {
+/* .carousel {
   overflow: hidden;
-}
+} */
 
 .carousel-container{
   height: 590px;
+  width: 1200px;
   position: relative;
+  overflow: hidden;
 }
 
 .carousel-image{
@@ -119,4 +121,39 @@
 .imageslider button {
   border: 0px;
   background-color: transparent;
+}
+
+
+/* shop by category */
+.shopbycategory {
+  margin: 100px 0px;
+}
+
+.sctitle {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.shopbycategory-content {
+  margin: 20px 0px;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.row {
+  display: flex;
+  width: 700px;
+  margin-bottom: 30px;
+}
+
+.categorytitle {
+  color: #ddd;
+  background-color: black;
+  width: 88.7%;
+  padding: 10px;
 }
