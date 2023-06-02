@@ -103,15 +103,18 @@
 }
 
 .carousel {
+  margin: 0px 15px;
   overflow: hidden;
 }
 
-.carousel-container{
+.carousel-container {
   height: 590px;
+  width: 1200px;
   position: relative;
+  overflow: hidden;
 }
 
-.carousel-image{
+.carousel-image {
   width: 1200px;
   float: left;
 }
@@ -121,3 +124,94 @@
   background-color: transparent;
 }
 
+/* shop by category */
+.shopbycategory {
+  margin: 100px 0px;
+}
+
+.sctitle {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.shopbycategory-content {
+  margin: 20px 0px;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.row {
+  display: flex;
+  width: 700px;
+  margin-bottom: 30px;
+}
+
+.categorytitle {
+  color: #ddd;
+  background-color: black;
+  width: 88.7%;
+  padding: 10px;
+}
+
+/* offers */
+.offers {
+  height: 490px;
+  width: 1000px;
+}
+
+.potrait-card img {
+  width: 100%;
+}
+
+.offers-title {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.offercard {
+  margin: 30px 0px;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: space-between;
+  padding: 0px 100px;
+}
+
+.potrait-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 30%;
+  height: 450px;
+  background-color: #e9e7e2;
+  padding: 20px 30px;
+}
+
+.landscape-card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 58%;
+}
+
+.landscape-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #d9d4cc;
+  padding: 20px 30px;
+  width: 100%;
+}
+
+.viewcollection {
+  background-color: #302c29;
+  color: #ddd;
+  padding: 10px 20px;
+  margin-top: 100px;
+}
