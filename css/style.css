@@ -42,7 +42,7 @@
 
 .line {
   border-left: 1px solid black;
-  height: 20px;
+  height: 100%;
 }
 
 .dropdown {
@@ -160,7 +160,7 @@
 
 /* offers */
 .offers {
-  height: 490px;
+  height: 540px;
   width: 1000px;
 }
 
@@ -184,9 +184,9 @@
 }
 
 .potrait-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: space-evenly; */
   width: 30%;
   height: 450px;
   background-color: #e9e7e2;
@@ -197,7 +197,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 58%;
+  width: 60%;
+  height: 90%;
 }
 
 .landscape-card {
@@ -206,12 +207,38 @@
   justify-content: space-evenly;
   background-color: #d9d4cc;
   padding: 20px 30px;
-  width: 100%;
+  width: 85%;
 }
 
 .viewcollection {
   background-color: #302c29;
   color: #ddd;
   padding: 10px 20px;
+  /* margin-top: 100px; */
+}
+
+.offercard img {
+  width: 180px;
+  height: 200px;
+}
+
+/* footer */
+.footermenu-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.footermenu {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  text-align: left;
+}
+
+.linef {
+  height: 100%;
+  border-left: 1px solid black;
 }
