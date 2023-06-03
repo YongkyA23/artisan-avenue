@@ -320,6 +320,11 @@ a {
   width: 100px;
 }
 
+.about-madegood-desc a:hover {
+  font-weight: bold;
+  border-bottom: 1px solid #fafafa;
+}
+
 /* footer */
 .footermenu-container {
   display: flex;
@@ -359,3 +364,15 @@ a {
   margin-top: 10px;
 }
 
+
+
+/* about us */
+.aboutus_content {
+  display: flex;
+
+}
+
+.aboutus_content img {
+  width: 540px;
+  height: 920px;
+}
