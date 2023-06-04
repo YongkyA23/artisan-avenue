@@ -18,11 +18,11 @@
   </head>
   <body>
     <div class="container">
-      <form action="" class="loginForm">
+      <form action="" class="loginForm" id="loginForm">
         <h1>Sign In</h1>
         <div class="emailform">
-          <div>Email Address</div>
-          <input type="email" name="email" id="email" />
+          <div>Username or Email</div>
+          <input type="text" name="usernameOrEmail" id="email" />
         </div>
         <div class="passwordform">
           <div>Password</div>
@@ -38,4 +38,9 @@
   </body>
   <script src="js/jquery-3.7.0.min.js"></script>
   <script src="js/script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      console.log(JSON.parse(localStorage.getItem("accounts")));
+    });
+  </script>
 </html>
