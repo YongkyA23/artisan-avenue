@@ -74,20 +74,28 @@ $("#right-arrow").click(function () {
 });
 
 // Store the user credentials in local storage
-var accounts = [
-  { email: "example1@example.com", username: "user1", password: "password1" },
-  { email: "example2@example.com", username: "user2", password: "password2" },
-  // Add more account objects as needed
-];
+if (!localStorage.getItem("userAccounts")) {
+  // Add default user accounts to local storage
+  const userAccounts = [
+    { username: "user1", email: "user1@example.com", password: "password1" },
+    { username: "user2", email: "user2@example.com", password: "password2" },
+  ];
+  localStorage.setItem("userAccounts", JSON.stringify(userAccounts));
+}
 
 var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
 
 var isLoggedInStatus = false;
 
-function updateLoginLinkText(text) {
+function updateLoginLinkText() {
   var loginLink = document.getElementById("loginLink");
-  if (loginLink) {
-    loginLink.textContent = text;
+  if (sessionStorage.getItem("isLoggedIn") === "true") {
+    var username = sessionStorage.getItem("username");
+    loginLink.textContent = "Hi, " + username; // Update the link text with the user's name
+    loginLink.setAttribute("href", "account.html"); // Update the link href to profile.html
+  } else {
+    loginLink.textContent = "Log In"; // Update the link text to "Log In"
+    loginLink.setAttribute("href", "login.html"); // Update the link href to login.html
   }
 }
 
@@ -106,10 +114,15 @@ document.addEventListener("DOMContentLoaded", function () {
     var password = document.getElementById("password").value;
 
     if (validateLogin(usernameOrEmail, password)) {
-      window.location.href = "index.html";
       var username = getUsername(usernameOrEmail);
-      updateLoginLinkText("Hi, " + username);
+      if (document.querySelector("#login-link")) {
+        updateLoginLinkText("Hi, " + username);
+      }
+      // Update login link text here
       isLoggedInStatus = true; // Set isLoggedInStatus to true to indicate the user is logged in
+      sessionStorage.setItem("isLoggedIn", "true"); // Store the login status in session storage
+      sessionStorage.setItem("username", username); // Store the username in session storage
+      window.location.href = "index.html"; // Redirect user to index.html
     } else {
       alert("Invalid username or password. Please try again.");
     }
@@ -152,6 +165,21 @@ function getUsername(usernameOrEmail) {
   return account ? account.username : "";
 }
 
+function logout() {
+  // Remove login status and username from session storage
+  sessionStorage.removeItem("isLoggedIn");
+  sessionStorage.removeItem("username");
+  isLoggedInStatus = false; // Set isLoggedInStatus to false to indicate user has logged out
+
+  // Update login link text here
+  if (document.querySelector("#login-link")) {
+    updateLoginLinkText("Login");
+  }
+
+  window.location.href = "index.html";
+  console.log("hello");
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   var registerForm = document.getElementById("registerForm");
   registerForm.addEventListener("submit", function (event) {
@@ -167,14 +195,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (validateRegistration(firstName, lastName, email, password)) {
       var username = generateUsername(firstName, lastName);
       var account = { username: username, email: email, password: password };
+
       registerAccount(account);
+
       alert(
         "Registration successful. Your username is: " +
           username +
           ". Please sign in to continue."
       );
-      window.location.href = "signin.html";
-      console.log("After:", accounts); // Redirect to the login page after successful registration
+      window.location.href = "signin.html"; // Redirect to the login page after successful registration
     } else {
       alert("Invalid registration details. Please try again.");
     }
@@ -191,6 +220,12 @@ function validateRegistration(firstName, lastName, email, password) {
     return false;
   }
 
+  if (isEmailTaken(email)) {
+    // Check if the email is already registered
+    alert("The email address is already taken. Please use a different email.");
+    return false;
+  }
+
   return true;
 }
 
@@ -201,7 +236,25 @@ function generateUsername(firstName, lastName) {
     ""
   );
 
+  var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+  var count = 1;
+
+  while (accounts.some((account) => account.username === username)) {
+    // Check if the username already exists
+    username = (
+      firstName.toLowerCase() +
+      lastName.toLowerCase() +
+      count
+    ).replace(/\s/g, ""); // Append numbers to the username
+    count++;
+  }
+
   return username; // Return the generated username
+}
+
+function isEmailTaken(email) {
+  var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+  return accounts.some((account) => account.email === email); // Check if the email is already registered
 }
 
 function registerAccount(account) {
