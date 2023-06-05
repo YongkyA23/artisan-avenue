@@ -83,6 +83,14 @@ var accounts = [
 var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
 
 var isLoggedInStatus = false;
+
+function updateLoginLinkText(text) {
+  var loginLink = document.getElementById("loginLink");
+  if (loginLink) {
+    loginLink.textContent = text;
+  }
+}
+
 // Check if the user is logged in
 if (isLoggedIn()) {
   var username = getUsername();
@@ -98,11 +106,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var password = document.getElementById("password").value;
 
     if (validateLogin(usernameOrEmail, password)) {
+      window.location.href = "index.html";
       var username = getUsername(usernameOrEmail);
       updateLoginLinkText("Hi, " + username);
       isLoggedInStatus = true; // Set isLoggedInStatus to true to indicate the user is logged in
-
-      window.location.href = "index.html";
     } else {
       alert("Invalid username or password. Please try again.");
     }
@@ -113,13 +120,6 @@ function isLoggedIn() {
   // Check if the login status exists in session storage
   var loginStatus = sessionStorage.getItem("isLoggedIn");
   return loginStatus === "true"; // Return true if the user is logged in, false otherwise
-}
-
-function updateLoginLinkText(text) {
-  var loginLink = document.getElementById("loginLink");
-  if (loginLink) {
-    loginLink.textContent = text;
-  }
 }
 
 function validateLogin(usernameOrEmail, password) {
@@ -195,10 +195,6 @@ function validateRegistration(firstName, lastName, email, password) {
 }
 
 function generateUsername(firstName, lastName) {
-  // Generate a username based on the first name and last name
-  // You can customize the logic to generate the username as per your requirements
-  // For example, concatenate the first name and last name, or use a combination of letters and numbers
-
   // Convert the first name and last name to lowercase and remove any spaces
   var username = (firstName.toLowerCase() + lastName.toLowerCase()).replace(
     /\s/g,
