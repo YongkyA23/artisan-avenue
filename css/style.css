@@ -474,3 +474,50 @@ a {
   padding: 200px;
   
 }
+
+.payment{
+  position: fixed;
+  top: 40%;
+  left: 35%;
+  margin: 0 auto;
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+  
+}
+
+.payBtn{
+  width: 100px;
+  height: 50px;
+  font-size: 20px;
+  background-color:white;
+}
+
+.payTxt{
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.success{
+  position: fixed;
+  top: 40%;
+  left: 40%;
+  margin: 0 auto;
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.succestext{
+  font-size: 30px;
+}
+
+.successimg{
+  width: 200px;
+}
