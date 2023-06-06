@@ -267,3 +267,6 @@ function registerAccount(account) {
 
   console.log("After:", accounts); // Check if the new account is added
 }
+
+
+

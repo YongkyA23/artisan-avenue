@@ -25,7 +25,7 @@
           <button type="submit" class="search-button">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
-         <input type="text" placeholder="Search ..." class="searchBox" />
+          <input type="text" placeholder="Search ..." class="searchBox" />
         </div>
         <div class="navbaritem-container">
           <a href=""> Home</a>
@@ -47,12 +47,11 @@
           <div class="line"></div>
           <a href="">Contact</a>
         </div>
-         <div class="right-navbar">
+        <div class="right-navbar">
           <div class="login">
             <i class="fa-solid fa-circle-user"></i>
             <a href="signin.html">Log In</a>
           </div>
-          <a href="">Cart (0)</a>
         </div>
       </nav>
     </div>
@@ -63,6 +62,9 @@
       <div class="productname">Duffle Bag</div>
       <div class="productId">DF001</div>
       <div class="price">Rp.300.000</div>
+      <div id="stock-container">
+        <p><span id="stock-count"></span></p>
+      </div>
       <div class="modelOption">
         <select name="model" id="mpdel-select">
           <option value="">Select Color</option>
@@ -89,4 +91,23 @@
       </div>
     </div>
   </body>
+  <script>
+    const products = {
+      name: "Duffle Bag",
+      id: "DF001",
+      price: 300000,
+      models: [
+        { name: "beige", price: 0 },
+        { name: "red", price: 0 },
+        { name: "blue", price: 0 },
+      ],
+      description:
+        "Bahan: Kain canvas\nInk: plastinol\nDimensi: up to 35 liter\nPanjang: 52cm\nLebar: 25cm\nTinggi: 26cm",
+      stock: 5,
+    };
+    const stockCountElement = document.getElementById("stock-count");
+
+    // Set the stock count text to the product's stock count
+    stockCountElement.textContent = `In stock: ${products.stock}`;
+  </script>
 </html>

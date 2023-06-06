@@ -47,12 +47,11 @@
           <div class="line"></div>
           <a href="contact.html">Contact</a>
         </div>
-         <div class="right-navbar">
+        <div class="right-navbar">
           <div class="login">
             <i class="fa-solid fa-circle-user"></i>
             <a href="signin.html">Log In</a>
           </div>
-          <a href="">Cart (0)</a>
         </div>
       </nav>
     </div>
@@ -62,6 +61,9 @@
       <div class="productname">Lampu Hias bahan kayu</div>
       <div class="productId">LK001</div>
       <div class="price">Rp.80.000</div>
+      <div id="stock-container">
+        <p><span id="stock-count"></span></p>
+      </div>
       <div class="modelOption">
         <select name="model" id="mpdel-select">
           <option value="">Select Model</option>
@@ -71,20 +73,20 @@
       </div>
       <div class="qty">
         <label for="">Quantity</label>
-        <input type="number" id="" name="" min="1" max="100" />
+        <input type="number" id="qtyInp" name="" min="1" max="100" />
       </div>
-      <button>Add To Cart</button>
+      <button id="buyBtn">Buy Now</button>
       <br />
       <br />
       <div class="description">
-      <b>  Lampu Meja Tidur Jepang Kayu Minimalis </b>
+        <b> Lampu Meja Tidur Jepang Kayu Minimalis </b>
         <br />
         Lampu meja berbahan dasar kayu dan dengan motif unik dan minimalis,
         cocok ditempatkan sebagai hiasan di ruang tamu, kamar tidur, cafe, atau
         restauran.
         <br />
         <br />
-       <b> Spesifikasi: </b> <br />
+        <b> Spesifikasi: </b> <br />
         1. Bahan: Kayu Palem <br />
         2. Finishing: Nippon woodstain mahogany <br />
         3. Dimensi: 12cm(P) x 12cm(L) x 24 cm(T) <br />
@@ -93,6 +95,34 @@
         6. Lampu: 3watt <br />
       </div>
     </div>
-    
   </body>
+  <script>
+    const products = {
+      name: "Lampu Hias bahan kayu",
+      id: "LK001",
+      price: 80000,
+      models: [
+        { name: "box", price: 0 },
+        { name: "zigzag", price: 5000 },
+      ],
+      stock: 10,
+    };
+    const stockCountElement = document.getElementById("stock-count");
+
+    // Set the stock count text to the product's stock count
+    stockCountElement.textContent = `In stock: ${products.stock}`;
+
+    const buyNowBtn = document.getElementById("buyBtn");
+    buyNowBtn.addEventListener("click", () => {
+      console.log("Buy now button clicked");
+      const qtyInput = document.getElementById("qtyInp");
+
+      if (qtyInput.value > products.stock) {
+        alert("Stock not enough");
+      } else {
+        products.stock -= qtyInput.value;
+        stockCountElement.textContent = `In stock: ${products.stock}`;
+      }
+    });
+  </script>
 </html>
