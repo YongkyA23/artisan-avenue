@@ -268,5 +268,18 @@ function registerAccount(account) {
   console.log("After:", accounts); // Check if the new account is added
 }
 
+const minusBtn = document.getElementById("minus-btn");
+const plusBtn = document.getElementById("plus-btn");
+const qtyInput = document.getElementById("quantity");
 
+minusBtn.addEventListener("click", () => {
+  if (qtyInput.value > 1) {
+    qtyInput.value = parseInt(qtyInput.value) - 1;
+  }
+});
 
+plusBtn.addEventListener("click", () => {
+  if (qtyInput.value < 100) {
+    qtyInput.value = parseInt(qtyInput.value) + 1;
+  }
+});

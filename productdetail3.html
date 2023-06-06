@@ -61,7 +61,6 @@
       <img src="img/paintings3.png" alt="lampu" />
       <img src="img/paintings5.png" alt="lampu" />
       <img src="img/paintings4.png" alt="lampu" />
-
       <div class="productname">Paintings Illustrations</div>
       <div class="productId">PI001</div>
       <div class="price">Rp.97.750</div>
@@ -81,10 +80,25 @@
         <input type="text" min="5" max="1000" />
       </div>
       <div class="qty">
-        <label for="">Quantity</label>
-        <input type="number" id="" name="" min="1" max="100" />
+        <label for="quantity">Quantity</label>
+        <div class="quantity">
+          <button class="minus-btn" type="button" name="button" id="minus-btn">
+            -
+          </button>
+          <input
+            type="number"
+            id="quantity"
+            name="quantity"
+            min="1"
+            max="100"
+            value="1"
+          />
+          <button class="plus-btn" type="button" name="button" id="plus-btn">
+            +
+          </button>
+        </div>
       </div>
-      <button>Buy Now</button>
+      <button id="buyBtn">Buy Now</button>
       <br />
       <br />
       <div class="description">
@@ -132,13 +146,26 @@
         { name: "3-4 Orang", price: 10000 },
         { name: "5-6 Orang", price: 20000 },
       ],
-      description:
-        "Potrait illustration adalah cara yang indah untuk mengabadikan momen istimewa dalam hidup Anda atau seseorang yang Anda sayangi. Potret ini sepenuhnya diilustrasikan secara digital dan anda akan menyukai detail dan profesionalitas gambar-gambar ini! Ini adalah hadiah personalisasi terbaik untuk pernikahan, ulang tahun, hari Valentine, Natal, dan lainnya!\nReminder:\nPotrait ilustrasi sudah termasuk dengan frame yang berukuran 13.5 x 18.5 cm\nPotrait Ilustrasi berukuran 10x15 cm\nHanya bisa SETENGAH BADAN tidak bisa full body\nHasil digital akan dikirimkan ke email ketika paket sudah dikirim ke alamat tujuan\nPackaging menggunakan box yang dijamin aman. (Free Bubble Wrap)",
       stock: 15,
     };
     const stockCountElement = document.getElementById("stock-count");
 
     // Set the stock count text to the product's stock count
     stockCountElement.textContent = `In stock: ${products.stock}`;
+
+    const buyNowBtn = document.getElementById("buyBtn");
+    buyNowBtn.addEventListener("click", () => {
+      console.log("Buy now button clicked");
+      const qtyInput = document.getElementById("quantity");
+
+      if (qtyInput.value > products.stock) {
+        alert("Stock not enough");
+      } else {
+        products.stock -= qtyInput.value;
+        stockCountElement.textContent = `In stock: ${products.stock}`;
+      }
+    });
   </script>
+  <script src="js/jquery-3.7.0.min.js"></script>
+  <script src="js/script.js"></script>
 </html>
