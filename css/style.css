@@ -357,14 +357,11 @@ a {
 
 .contact i {
   margin-right: 10px;
-
 }
 
 .contacts {
   margin-top: 10px;
 }
-
-
 
 /* about us */
 .aboutus_content {
@@ -395,7 +392,6 @@ a {
   margin-bottom: 30px;
 }
 
-
 /* contact */
 .contact-content {
   padding: 50px 400px 20px 150px;
@@ -413,7 +409,6 @@ a {
 
 .contact-content p {
   font-size: 24px;
-
 }
 
 .contact-text p {
@@ -452,7 +447,7 @@ a {
 
 .contact-form {
   margin-top: 50px;
-  display: inline-block
+  display: inline-block;
 }
 
 .form-item {
@@ -472,52 +467,64 @@ a {
   justify-content: center;
   align-items: center;
   padding: 200px;
-  
 }
 
-.payment{
+.payment {
   position: fixed;
   top: 40%;
   left: 35%;
   margin: 0 auto;
   display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
-  
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
-.payBtn{
+.payBtn {
   width: 100px;
   height: 50px;
   font-size: 20px;
-  background-color:white;
+  background-color: white;
 }
 
-.payTxt{
+.payTxt {
   font-size: 50px;
   margin-bottom: 20px;
 }
 
-.success{
+.success {
   position: fixed;
   top: 40%;
   left: 40%;
   margin: 0 auto;
   display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
-.succestext{
+.succestext {
   font-size: 30px;
 }
 
-.successimg{
+.successimg {
   width: 200px;
+}
+
+.searchBox:focus {
+  outline: none;
+  border: none; /* or you can set a different border style if you prefer */
+}
+
+textarea {
+  resize: none;
+}
+
+.textAreaMsg {
+  width: 200px;
+  height: 100px;
 }
