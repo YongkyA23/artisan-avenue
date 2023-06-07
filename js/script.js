@@ -277,6 +277,7 @@ plusBtn.addEventListener("click", () => {
     qtyInput.value = parseInt(qtyInput.value) + 1;
   }
 });
+
 const productData = {
   LK001: {
     name: "Lampu Hias bahan kayu",

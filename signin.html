@@ -36,6 +36,19 @@
       </div>
     </div>
   </body>
+  <script>
+    function isLoggedIn() {
+      // Check if the login status exists in session storage
+      var loginStatus = sessionStorage.getItem("isLoggedIn");
+      return loginStatus === "true"; // Return true if the user is logged in, false otherwise
+    }
+
+    if (isLoggedIn()) {
+      alert("You are already Signed In!");
+      window.location.href = "index.html";
+    }
+  </script>
+
   <script src="js/jquery-3.7.0.min.js"></script>
   <script src="js/script.js"></script>
 </html>
