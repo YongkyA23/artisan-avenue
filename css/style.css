@@ -461,13 +461,65 @@ a {
   padding-bottom: 4px;
 }
 
+/* sign in */
+
 .sign-in-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 200px;
+  /* align-items: center; */
+  margin-top: 150px;
+  width: fit-content;
+  height: fit-content;
 }
+
+.loginForm {
+  margin: 0;
+}
+
+.loginForm h1 {
+  margin-bottom: 50px;
+}
+
+.input-data  {
+  width: 100%;
+}
+
+.passwordform {
+  margin-top: 10px;
+}
+
+.input-data input {
+  width: 100%;
+  margin: 4px 0px;
+  padding: 10px 0px;
+  border-radius: 0px;
+  border-bottom: 1px solid #302c29;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+.input-data input:focus {
+  outline: none;
+}
+
+.button-signin {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  height: 42px;
+  background-color: #302c29;
+  color: #d9d4cc;
+}
+
+.registerbutton a {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* payment */
 
 .payment {
   position: fixed;
@@ -494,6 +546,7 @@ a {
   margin-bottom: 20px;
 }
 
+/* payment success */
 .success {
   position: fixed;
   top: 40%;
