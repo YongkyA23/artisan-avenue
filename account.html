@@ -17,31 +17,67 @@
   </head>
   <body>
     <div class="container">
+      <div class="logo-header">
+        <img src="/img/MadeGoodLogo.png" alt="" />
+      </div>
+      <nav class="navbar">
+        <div class="search-container">
+          <button type="submit" class="search-button">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <input type="text" placeholder="Search ..." class="searchBox" />
+        </div>
+        <div class="navbaritem-container">
+          <a href="index.html">Home</a>
+          <div class="line"></div>
+          <div class="dropdown">
+            <a href="">Shop</a>
+            <div class="navbaritem-dropdown">
+              <a href="">All Products</a>
+              <a href="">DIY Gifts</a>
+              <a href="">Keychains</a>
+              <a href="">Paintings</a>
+              <a href="">Toys</a>
+              <a href="">Lamp</a>
+              <a href="">Bag</a>
+            </div>
+          </div>
+          <div class="line"></div>
+          <a href="aboutus.html">About</a>
+          <div class="line"></div>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="right-navbar">
+          <div class="login">
+            <i class="fa-solid fa-circle-user"></i>
+            <a href="signin.html" id="loginLink">Log In</a>
+          </div>
+        </div>
+      </nav>
+
       <div class="profile">
         <div class="profilpicture">
           <img src="img/profile.png" alt="" srcset="" />
         </div>
+        <div class="changepicture">
+          <button>Change Picture</button>
+        </div>
         <div>Profil Saya</div>
         <div class="username">
           <div>Username</div>
-          <input type="text" value="A" disabled />
-        </div>
-        <div class="nama">
-          <div>Nama</div>
-          <input type="text" value="A" disabled />
+          <input type="text" value="" disabled id="username" />
         </div>
         <div class="email">
           <div>Email</div>
-          <input type="text" value="A" disabled />
+          <input type="text" value="" disabled id="emailInput" />
         </div>
-        <div class="tanggallahir">
-          <div>Tanggal Lahir</div>
-          <div class="tanggalInp">
-            <input type="date" name="A" id="" value="2023-06-02" disabled />
-          </div>
+        <div class="password">
+          <div>Password</div>
+          <input type="password" value="" disabled id="passwordInput" />
         </div>
         <div class="button">
-          <input type="submit" value="Submit" />
+          <button id="editBtn">Edit</button>
         </div>
         <div class="logoutBtn">
           <button onmousedown="logout()">Log Out</button>
@@ -87,6 +123,93 @@
       </footer>
     </div>
   </body>
+  <script>
+    function displayUserInformation() {
+      var userAccounts = JSON.parse(localStorage.getItem("userAccounts")) || [];
+      var currentUser = sessionStorage.getItem("username");
+
+      // Find the account with the matching username in local storage
+      var account = userAccounts.find(function (acc) {
+        return currentUser === acc.username;
+      });
+
+      // If account is found, then display the user information
+      if (account) {
+        document.querySelector(".username input").value = account.username;
+        document.querySelector(".email input").value = account.email;
+        document.querySelector(".password input").value = account.password;
+      } else {
+        alert("User not found");
+      }
+    }
+
+    window.onload = function () {
+      displayUserInformation();
+    };
+
+    const userAccounts = JSON.parse(localStorage.getItem("userAccounts")) || [];
+
+    const usernameInput = document.getElementById("username");
+    const emailInput = document.getElementById("emailInput");
+    const passwordInput = document.getElementById("passwordInput");
+    const editBtn = document.getElementById("editBtn");
+
+    let isEditing = false;
+    let originalUsername = "";
+    let originalEmail = "";
+
+    editBtn.addEventListener("click", function () {
+      if (isEditing) {
+        const newUsername = usernameInput.value.trim();
+        const newEmail = emailInput.value.trim();
+        const newPassword = passwordInput.value.trim();
+        if (!newUsername || !newEmail || !newPassword) {
+          alert("All fields are required!");
+          return;
+        }
+        const existingUser = userAccounts.find(
+          (user) => user.username === newUsername || user.email === newEmail
+        );
+        if (
+          existingUser &&
+          originalUsername !== newUsername &&
+          originalEmail !== newEmail
+        ) {
+          alert("A user with that username or email already exists!");
+          return;
+        }
+        const updatedUser = {
+          username: newUsername,
+          email: newEmail,
+          password: newPassword,
+        };
+        const userIndex = userAccounts.findIndex(
+          (user) =>
+            user.username === originalUsername && user.email === originalEmail
+        );
+        userAccounts[userIndex] = updatedUser;
+        localStorage.setItem("userAccounts", JSON.stringify(userAccounts));
+        // Update username in sessionStorage and reload the page
+        if (originalUsername !== newUsername) {
+          sessionStorage.setItem("username", newUsername);
+          location.reload();
+        }
+        usernameInput.disabled = true;
+        emailInput.disabled = true;
+        passwordInput.disabled = true;
+        editBtn.textContent = "Edit";
+        isEditing = false;
+      } else {
+        originalUsername = usernameInput.value;
+        originalEmail = emailInput.value;
+        usernameInput.disabled = false;
+        emailInput.disabled = false;
+        passwordInput.disabled = false;
+        editBtn.textContent = "Save";
+        isEditing = true;
+      }
+    });
+  </script>
   <script src="js/jquery-3.7.0.min.js"></script>
   <script src="js/script.js"></script>
 </html>

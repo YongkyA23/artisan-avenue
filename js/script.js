@@ -73,7 +73,6 @@ $("#right-arrow").click(function () {
   );
 });
 
-// Store the user credentials in local storage
 if (!localStorage.getItem("userAccounts")) {
   // Add default user accounts to local storage
   const userAccounts = [
@@ -83,7 +82,7 @@ if (!localStorage.getItem("userAccounts")) {
   localStorage.setItem("userAccounts", JSON.stringify(userAccounts));
 }
 
-var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+var accounts = JSON.parse(localStorage.getItem("userAccounts")) || [];
 
 var isLoggedInStatus = false;
 
@@ -136,7 +135,7 @@ function isLoggedIn() {
 }
 
 function validateLogin(usernameOrEmail, password) {
-  var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+  var accounts = JSON.parse(localStorage.getItem("userAccounts")) || [];
 
   // Check if the entered username/email and password match any of the stored accounts
   for (var i = 0; i < accounts.length; i++) {
@@ -154,7 +153,7 @@ function validateLogin(usernameOrEmail, password) {
 }
 
 function getUsername(usernameOrEmail) {
-  var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+  var accounts = JSON.parse(localStorage.getItem("userAccounts")) || [];
 
   // Find the account with the matching username/email
   var account = accounts.find(function (acc) {
@@ -236,7 +235,7 @@ function generateUsername(firstName, lastName) {
     ""
   );
 
-  var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+  var accounts = JSON.parse(localStorage.getItem("userAccounts")) || [];
   var count = 1;
 
   while (accounts.some((account) => account.username === username)) {
@@ -253,17 +252,17 @@ function generateUsername(firstName, lastName) {
 }
 
 function isEmailTaken(email) {
-  var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+  var accounts = JSON.parse(localStorage.getItem("userAccounts")) || [];
   return accounts.some((account) => account.email === email); // Check if the email is already registered
 }
 
 function registerAccount(account) {
-  var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+  var accounts = JSON.parse(localStorage.getItem("userAccounts")) || [];
 
   console.log("Before:", accounts); // Check the existing accounts
 
   accounts.push(account);
-  localStorage.setItem("accounts", JSON.stringify(accounts));
+  localStorage.setItem("userAccounts", JSON.stringify(accounts));
 
   console.log("After:", accounts); // Check if the new account is added
 }
