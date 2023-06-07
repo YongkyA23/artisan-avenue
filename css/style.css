@@ -758,6 +758,20 @@ textarea {
   border: 1px solid #302c29;
 }
 
+.customText {
+  margin: 20px 0px;
+}
+
+.customText input {
+  height: 42px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: white;
+  border: 1px solid #302c29;
+  padding: 0px;
+  margin-left: 10px;
+}
+
 .buyBtn {
   width: 100%;
   height: 42px;
@@ -769,6 +783,4 @@ textarea {
   .modelOption select {
     padding: 0px 10px;
   }
-
-  
 }
