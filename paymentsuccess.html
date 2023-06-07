@@ -18,12 +18,28 @@
   <body>
     <div class="container success">
       <img src="img/grady.png" alt="grady" srcset="" class="successimg" />
-      <div class="succestext">Payment Successful!</div>
+      <div class="succestext">
+        Payment Successful! Redirecting in
+        <span id="countdown">3</span> seconds.
+      </div>
     </div>
   </body>
   <script>
-    setTimeout(function () {
-      window.location.href = "index.html";
-    }, 3000);
+    // Get the countdown element
+    const countdownEl = document.getElementById("countdown");
+
+    // Set the starting countdown value
+    let countdown = 3;
+
+    // Update the countdown and redirect after each second
+    const countdownInterval = setInterval(() => {
+      countdown--;
+      countdownEl.textContent = countdown;
+
+      if (countdown <= 0) {
+        clearInterval(countdownInterval);
+        window.location.href = "index.html";
+      }
+    }, 1000);
   </script>
 </html>
