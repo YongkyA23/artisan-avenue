@@ -105,41 +105,6 @@
       </div>
     </div>
   </body>
-  <script>
-    const productId = "DF001";
-    const products = JSON.parse(localStorage.getItem(productId)) || {
-      name: "Duffle Bag",
-      id: productId,
-      price: 300000,
-      models: [
-        { name: "beige", price: 0 },
-        { name: "red", price: 0 },
-        { name: "blue", price: 0 },
-      ],
-      stock: 5,
-    };
-    const stockCountElement = document.getElementById("stock-count");
-    stockCountElement.textContent = `In stock: ${products.stock}`;
-
-    const buyNowBtn = document.getElementById("buyBtn");
-    buyNowBtn.addEventListener("click", () => {
-      console.log("Buy now button clicked");
-      const qtyInput = document.getElementById("quantity");
-
-      if (qtyInput.value > products.stock) {
-        alert("Stock not enough");
-      } else {
-        products.stock -= qtyInput.value;
-        stockCountElement.textContent = `In stock: ${products.stock}`;
-        localStorage.setItem(productId, JSON.stringify(products));
-
-        // Redirect to payment.html with price value as query parameter
-        const priceValue = products.price * qtyInput.value;
-        const paymentUrl = `payment.html?price=${priceValue}`;
-        window.location.replace(paymentUrl);
-      }
-    });
-  </script>
   <script src="js/jquery-3.7.0.min.js"></script>
   <script src="js/script.js"></script>
 </html>

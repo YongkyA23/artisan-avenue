@@ -3,7 +3,6 @@ var $slider = $(".carousel");
 var $sliderContainer = $(".carousel-container");
 var $slides = $(".carousel-image");
 
-//variabel pembantu
 var $slideWidth = $slides.width();
 
 var $slideHeight = $slides.height();
@@ -14,26 +13,15 @@ var $slideIndex = 0;
 
 var $totalWidth = $slideCount * $slideWidth;
 
-//mengatur ukuran slider
-
 $slider.css({ width: $slideWidth, height: $slideHeight });
 
-// mengatur ukuran container
 $sliderContainer.css({
   width: $totalWidth,
   height: $slideHeight,
   marginLeft: -$slideWidth,
 });
 
-//mengatur ukuran slide
-
 $slides.css({ width: $slideWidth, height: $slideHeight });
-
-//mengatur ukuran total width
-
-// $sliderContainer.css({ width: $totalWidth });
-
-//fungsi untuk mengatur slide
 
 function goToSlide(index) {
   if (index < 0) {
@@ -121,7 +109,14 @@ document.addEventListener("DOMContentLoaded", function () {
       isLoggedInStatus = true; // Set isLoggedInStatus to true to indicate the user is logged in
       sessionStorage.setItem("isLoggedIn", "true"); // Store the login status in session storage
       sessionStorage.setItem("username", username); // Store the username in session storage
-      window.location.href = "index.html"; // Redirect user to index.html
+      // In your signin.js file, after the user successfully signs in:
+      var params = new URLSearchParams(window.location.search);
+      var previousUrl = params.get("previous");
+      if (previousUrl) {
+        window.location.href = previousUrl;
+      } else {
+        window.location.href = "index.html";
+      }
     } else {
       alert("Invalid username or password. Please try again.");
     }
@@ -281,4 +276,145 @@ plusBtn.addEventListener("click", () => {
   if (qtyInput.value < 100) {
     qtyInput.value = parseInt(qtyInput.value) + 1;
   }
+});
+const productData = {
+  LK001: {
+    name: "Lampu Hias bahan kayu",
+    id: "LK001",
+    price: 80000,
+    models: [
+      { name: "box", price: 0 },
+      { name: "zigzag", price: 5000 },
+    ],
+    stock: 10,
+  },
+  DF001: {
+    name: "Duffle Bag",
+    id: "DF001",
+    price: 300000,
+    models: [
+      { name: "beige", price: 0 },
+      { name: "red", price: 0 },
+      { name: "blue", price: 0 },
+    ],
+    stock: 5,
+  },
+  PI001: {
+    name: "Paintings Illustrations",
+    id: "PI001",
+    price: 97750,
+    models: [
+      { name: "1-2 Orang", price: 0 },
+      { name: "3-4 Orang", price: 10000 },
+      { name: "5-6 Orang", price: 20000 },
+    ],
+    stock: 15,
+  },
+};
+
+if (window.location.pathname.startsWith("/productdetail.html")) {
+  const productId = "LK001";
+  const product =
+    JSON.parse(localStorage.getItem(productId)) || productData[productId];
+
+  const stockCountElement = document.getElementById("stock-count");
+  stockCountElement.textContent = `In stock: ${product.stock}`;
+
+  const buyNowBtn = document.getElementById("buyBtn");
+  buyNowBtn.addEventListener("click", () => {
+    console.log("Buy now button clicked");
+    const qtyInput = document.getElementById("quantity");
+
+    if (qtyInput.value > product.stock) {
+      alert("Stock not enough");
+    } else {
+      if (isLoggedIn()) {
+        product.stock -= qtyInput.value;
+        stockCountElement.textContent = `In stock: ${product.stock}`;
+        localStorage.setItem(productId, JSON.stringify(product));
+
+        const priceValue = product.price * qtyInput.value;
+        redirectToPaymentPage(priceValue);
+      } else {
+        redirectToSigninPage();
+      }
+    }
+  });
+} else if (window.location.pathname.startsWith("/productdetail2.html")) {
+  const productId = "DF001";
+  const product =
+    JSON.parse(localStorage.getItem(productId)) || productData[productId];
+
+  const stockCountElement = document.getElementById("stock-count");
+  stockCountElement.textContent = `In stock: ${product.stock}`;
+
+  const buyNowBtn = document.getElementById("buyBtn");
+  buyNowBtn.addEventListener("click", () => {
+    console.log("Buy now button clicked");
+    const qtyInput = document.getElementById("quantity");
+
+    if (qtyInput.value > product.stock) {
+      alert("Stock not enough");
+    } else {
+      if (isLoggedIn()) {
+        product.stock -= qtyInput.value;
+        stockCountElement.textContent = `In stock: ${product.stock}`;
+        localStorage.setItem(productId, JSON.stringify(product));
+
+        const priceValue = product.price * qtyInput.value;
+        redirectToPaymentPage(priceValue);
+      } else {
+        redirectToSigninPage();
+      }
+    }
+  });
+} else if (window.location.pathname.startsWith("/productdetail3.html")) {
+  const productId = "PI001";
+  const product =
+    JSON.parse(localStorage.getItem(productId)) || productData[productId];
+
+  const stockCountElement = document.getElementById("stock-count");
+  stockCountElement.textContent = `In stock: ${product.stock}`;
+
+  const buyNowBtn = document.getElementById("buyBtn");
+  buyNowBtn.addEventListener("click", () => {
+    console.log("Buy now button clicked");
+    const qtyInput = document.getElementById("quantity");
+
+    if (qtyInput.value > product.stock) {
+      alert("Stock not enough");
+    } else {
+      if (isLoggedIn()) {
+        product.stock -= qtyInput.value;
+        stockCountElement.textContent = `In stock: ${product.stock}`;
+        localStorage.setItem(productId, JSON.stringify(product));
+
+        const priceValue = product.price * qtyInput.value;
+        redirectToPaymentPage(priceValue);
+      } else {
+        redirectToSigninPage();
+      }
+    }
+  });
+}
+
+function redirectToPaymentPage(priceValue) {
+  const paymentUrl = `payment.html?price=${priceValue}`;
+  window.location.replace(paymentUrl);
+}
+
+function redirectToSigninPage() {
+  const url =
+    "signin.html?previous=" + encodeURIComponent(window.location.href);
+  window.location.href = url;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  var buyBtn = document.getElementById("buyBtn");
+  buyBtn.addEventListener("click", function () {
+    if (!isLoggedIn()) {
+      alert("Please sign in to continue.");
+      redirectToSigninPage();
+    }
+  });
 });

@@ -111,41 +111,6 @@
       </div>
     </div>
   </body>
-  <script>
-    const productId = "LK001";
-    const product = JSON.parse(localStorage.getItem(productId)) || {
-      name: "Lampu Hias bahan kayu",
-      id: productId,
-      price: 80000,
-      models: [
-        { name: "box", price: 0 },
-        { name: "zigzag", price: 5000 },
-      ],
-      stock: 10,
-    };
-
-    const stockCountElement = document.getElementById("stock-count");
-    stockCountElement.textContent = `In stock: ${product.stock}`;
-
-    const buyNowBtn = document.getElementById("buyBtn");
-    buyNowBtn.addEventListener("click", () => {
-      console.log("Buy now button clicked");
-      const qtyInput = document.getElementById("quantity");
-
-      if (qtyInput.value > product.stock) {
-        alert("Stock not enough");
-      } else {
-        product.stock -= qtyInput.value;
-        stockCountElement.textContent = `In stock: ${product.stock}`;
-        localStorage.setItem(productId, JSON.stringify(product));
-
-        // Redirect to payment.html with price value as query parameter
-        const priceValue = product.price * qtyInput.value;
-        const paymentUrl = `payment.html?price=${priceValue}`;
-        window.location.replace(paymentUrl);
-      }
-    });
-  </script>
   <script src="js/jquery-3.7.0.min.js"></script>
   <script src="js/script.js"></script>
 </html>

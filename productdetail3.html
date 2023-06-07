@@ -136,43 +136,7 @@
       </div>
     </div>
   </body>
-  <script>
-    const productId = "PI001";
-    const products = JSON.parse(localStorage.getItem(productId)) || {
-      name: "Paintings Illustrations",
-      id: productId,
-      price: 97750,
-      models: [
-        { name: "1-2 Orang", price: 0 },
-        { name: "3-4 Orang", price: 10000 },
-        { name: "5-6 Orang", price: 20000 },
-      ],
-      stock: 15,
-    };
-    const stockCountElement = document.getElementById("stock-count");
 
-    // Set the stock count text to the product's stock count
-    stockCountElement.textContent = `In stock: ${products.stock}`;
-
-    const buyNowBtn = document.getElementById("buyBtn");
-    buyNowBtn.addEventListener("click", () => {
-      console.log("Buy now button clicked");
-      const qtyInput = document.getElementById("quantity");
-
-      if (qtyInput.value > products.stock) {
-        alert("Stock not enough");
-      } else {
-        products.stock -= qtyInput.value;
-        stockCountElement.textContent = `In stock: ${products.stock}`;
-        localStorage.setItem(productId, JSON.stringify(products));
-
-        // Redirect to payment.html with price value as query parameter
-        const priceValue = products.price * qtyInput.value;
-        const paymentUrl = `payment.html?price=${priceValue}`;
-        window.location.replace(paymentUrl);
-      }
-    });
-  </script>
   <script src="js/jquery-3.7.0.min.js"></script>
   <script src="js/script.js"></script>
 </html>
