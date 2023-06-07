@@ -596,3 +596,56 @@ textarea {
   font-size: 50px;
   margin-bottom: 20px;
 }
+
+
+/* account */
+.profile {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 50px;
+  height: fit-content;
+}
+
+.profile h1 {
+  margin: 20px auto 40px auto;
+}
+
+.profile button {
+  padding: 10px 20px;
+}
+
+.profilpicture img {
+  width: 150px;
+  border-radius: 100%;
+  margin-bottom: 10px;
+}
+
+.changepicture button{
+  height: 42px;
+  background-color: #302c29;
+  color: #d9d4cc;
+  font-size: 16px;
+}
+
+.user-data {
+  margin: 50px auto 10px auto;
+  width: 300px;
+}
+
+.user-data input {
+  margin: 8px 0px;
+  height: 42px;
+  background-color: #d9d4cc;
+  padding: 0px 12px;
+  font-size: 16px;
+  width: 90%;
+}
+
+.user-data-box {
+  margin-bottom: 14px;
+}
+
+.editbtn {
+  width: 100%;
+}

@@ -57,31 +57,40 @@
       </nav>
 
       <div class="profile">
+        <h1>My Account</h1>
         <div class="profilpicture">
           <img src="img/profile.png" alt="" srcset="" />
         </div>
         <div class="changepicture">
-          <button>Change Picture</button>
+          <button>Upload Profile Photo</button>
         </div>
-        <div>Profil Saya</div>
-        <div class="username">
-          <div>Username</div>
-          <input type="text" value="" disabled id="username" />
+        
+        <div class="user-data">
+          <div class="user-data-box">
+            <div>Username</div>
+            <input type="text" value="user1" disabled id="username" />
+          </div>
+
+          <div class="user-data-box">
+            <div>Email</div>
+            <input type="text" value="user1@example.com" disabled id="emailInput" />
+          </div>
+          
+          <div class="user-data-box"> <!-- ini jg gw ganti sesuai wireframe  -->
+            <div>Password</div>
+            <input type="password" value="password1" disabled id="passwordInput" />
+          </div>
+
+          <div class="button">
+            <button class="editbtn" id="editBtn">Edit</button>
+          </div>
+  
+          <div class="logoutBtn">
+            <button onmousedown="logout()">Log Out</button>
+          </div>
+
         </div>
-        <div class="email">
-          <div>Email</div>
-          <input type="text" value="" disabled id="emailInput" />
-        </div>
-        <div class="password">
-          <div>Password</div>
-          <input type="password" value="" disabled id="passwordInput" />
-        </div>
-        <div class="button">
-          <button id="editBtn">Edit</button>
-        </div>
-        <div class="logoutBtn">
-          <button onmousedown="logout()">Log Out</button>
-        </div>
+        
       </div>
       <footer>
         <!-- footer here -->
