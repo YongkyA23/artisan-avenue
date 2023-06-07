@@ -64,7 +64,7 @@
         <div class="changepicture">
           <button>Upload Profile Photo</button>
         </div>
-        
+
         <div class="user-data">
           <div class="user-data-box">
             <div>Username</div>
@@ -73,24 +73,33 @@
 
           <div class="user-data-box">
             <div>Email</div>
-            <input type="text" value="user1@example.com" disabled id="emailInput" />
+            <input
+              type="text"
+              value="user1@example.com"
+              disabled
+              id="emailInput"
+            />
           </div>
-          
-          <div class="user-data-box"> <!-- ini jg gw ganti sesuai wireframe  -->
+
+          <div class="user-data-box">
+            <!-- ini jg gw ganti sesuai wireframe  -->
             <div>Password</div>
-            <input type="password" value="password1" disabled id="passwordInput" />
+            <input
+              type="password"
+              value="password1"
+              disabled
+              id="passwordInput"
+            />
           </div>
 
           <div class="button">
             <button class="editbtn" id="editBtn">Edit</button>
           </div>
-  
+
           <div class="logoutBtn">
             <button onmousedown="logout()">Log Out</button>
           </div>
-
         </div>
-        
       </div>
       <footer>
         <!-- footer here -->
@@ -144,9 +153,9 @@
 
       // If account is found, then display the user information
       if (account) {
-        document.querySelector(".username input").value = account.username;
-        document.querySelector(".email input").value = account.email;
-        document.querySelector(".password input").value = account.password;
+        document.getElementById("username").value = account.username;
+        document.getElementById("emailInput").value = account.email;
+        document.getElementById("passwordInput").value = account.password;
       } else {
         alert("User not found");
       }
