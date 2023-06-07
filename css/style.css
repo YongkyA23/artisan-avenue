@@ -519,6 +519,16 @@ a {
   font-weight: bold;
 }
 
+.close-btn i {
+  width: 40px;
+  height: 40px;
+}
+
+.sign-in-container img {
+  width: 40px;
+  margin-top: 60px;
+}
+
 /* payment */
 
 .payment {
