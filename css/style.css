@@ -623,8 +623,9 @@ textarea {
 
 .changepicture button{
   height: 42px;
-  background-color: #302c29;
-  color: #d9d4cc;
+  background-color: white;
+  color: #302c29;
+  border: 2px solid #302c29;
   font-size: 16px;
 }
 
@@ -648,4 +649,126 @@ textarea {
 
 .editbtn {
   width: 100%;
+  background-color: #302c29;
+  color: #d9d4cc;
+  font-size: 16px;
+  height: 42px;
+}
+
+.logoutBtn {
+  margin: 100px auto 0px auto;
+}
+
+.logoutBtn button {
+  width: 100%;
+  background-color: white;
+  color: rgb(226, 81, 81);
+  border: 2px solid rgb(226, 81, 81);
+  font-size: 16px;
+}
+
+/* product detail */
+.product-detail-container {
+  margin: 0px 200px;
+}
+
+.img-info {
+  display: flex;
+}
+
+.product-img {
+  width: 450px;
+}
+
+.product-main-img {
+  width: 450px;
+}
+
+.small-img {
+  display: inline;
+}
+
+.small-img img {
+  width: 8%;
+  cursor: pointer;
+}
+
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0px;
+  font-size: 16px;
+}
+
+.page-nav div {
+  margin: 0px;
+}
+
+.nav-page {
+  display: flex;
+}
+
+.nav-btn button{
+  background-color: white;
+  border: 0px;
+  margin: 0px 10px;
+  font-size: 16px;
+}
+
+.stock-container {
+  margin-top: 30px;
+  font-size: 18px;
+}
+
+.modelOption select {
+  width: 100%;
+  height: 42px;
+  font-size: 18px;
+  background-color: white;
+  margin: 30px 0px 10px 0px;
+  padding: 0px 10px;
+}
+
+.qty {
+  margin-top: 10px;
+}
+
+.quantity {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  
+}
+
+.quantity input {
+  width: 100%;
+  font-size: 18px;
+  background-color: white;
+  padding: 0px 15px;
+  margin: 0px 20px;
+  border: 1px solid #302c29;
+}
+
+.quantity button {
+  width: 54px;
+  height: 42px;
+  font-size: 18px;
+  background-color: white;
+  padding: 0px 10px;
+  border: 1px solid #302c29;
+}
+
+.buyBtn {
+  width: 100%;
+  height: 42px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: white;
+  margin: 50px 0px;
+
+  .modelOption select {
+    padding: 0px 10px;
+  }
+
+  
 }

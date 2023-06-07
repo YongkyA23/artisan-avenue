@@ -15,6 +15,7 @@
     />
     <title>Made Good</title>
   </head>
+
   <body>
     <div class="container">
       <div class="logo-header">
@@ -54,89 +55,165 @@
           </div>
         </div>
       </nav>
-    </div>
 
-    <div class="paintings">
-      <img src="img/paintings2.png" alt="lampu" />
-      <img src="img/paintings3.png" alt="lampu" />
-      <img src="img/paintings5.png" alt="lampu" />
-      <img src="img/paintings4.png" alt="lampu" />
-      <div class="productname">Paintings Illustrations</div>
-      <div class="productId">PI001</div>
-      <div class="price">Rp.97.750</div>
-      <div id="stock-container">
-        <p><span id="stock-count"></span></p>
-      </div>
-      <div class="modelOption">
-        <select name="model" id="mpdel-select">
-          <option value="">Ilustrasi</option>
-          <option value="model1">1-2 Orang</option>
-          <option value="model2">3-4 Orang</option>
-          <option value="model2">5-6 Orang</option>
-        </select>
-      </div>
-      <div class="customText">
-        <label for=""> Custom here(optional) </label>
-        <input type="text" min="5" max="1000" />
-      </div>
-      <div class="qty">
-        <label for="quantity">Quantity</label>
-        <div class="quantity">
-          <button class="minus-btn" type="button" name="button" id="minus-btn">
-            -
-          </button>
-          <input
-            type="number"
-            id="quantity"
-            name="quantity"
-            min="1"
-            max="100"
-            value="1"
-          />
-          <button class="plus-btn" type="button" name="button" id="plus-btn">
-            +
-          </button>
+      <main class="maincontent">
+        <div class="product-detail-container">
+          <div class="page-nav">
+            <div>Home / Paintings Illustration</div>
+            <div class="nav-page">
+              <div class="nav-btn">
+                <button><  Prev</button>
+              </div>
+              <div class="line"></div>
+              <div class="nav-btn">
+                <button>Next  ></button>
+              </div>
+            </div>
+          </div>
+  
+          <div class="product">
+            <div class="img-info">
+              <div class="product-img">
+                <img class="product-main-img" src="img/paintings2.png" alt="Duffle Bag"/>
+                <div class="small-img-group">
+                  <div class="small-img">
+                    <img src="img/paintings2.png" alt="Paintings" />
+                  </div>
+                  <div class="small-img">
+                    <img src="img/paintings3.png" alt="Paintings" />
+                  </div>
+                  <div class="small-img">
+                    <img src="img/paintings5.png" alt="Paintings" />
+                  </div>
+                  <div class="small-img">
+                    <img src="img/paintings5.png" alt="Paintings" />
+                  </div>
+                </div>
+
+                <br/>
+                <br/>
+                <div class="description">
+                    Potrait illustration adalah cara yang indah untuk mengabadikan momen
+                    istimewa dalam hidup Anda atau seseorang yang Anda sayangi. Potret ini
+                    sepenuhnya diilustrasikan secara digital dan anda akan menyukai detail
+                    dan profesionalitas gambar-gambar ini! Ini adalah hadiah personalisasi
+                    terbaik untuk pernikahan, ulang tahun, hari Valentine, Natal, dan
+                    lainnya! <br />
+                    <b>REMINDER: </b> <br />
+                    1. Potrait ilustrasi sudah termasuk dengan frame yang berukuran 13.5 x
+                    18.5 cm <br />
+                    2. Potrait Ilustrasi berukuran 10x15 cm <br />
+                    3. Foto akan di ilustrasikan oleh designer kami <br />
+                    4. Hanya bisa <b>SETENGAH BADAN</b> tidak bisa full body <br />
+                    5. Hasil digital akan dikirimkan ke email ketika paket sudah dikirim ke
+                    alamat tujuan <br />
+                    6. Packaging menggunakan box yang dijamin aman. (Free Bubble Wrap)
+                    <br />
+                    7. Custom tulisan pada packaging harap DITULIS di custom text saat mau
+                    check out, Contoh: (maksimal 3 kata) <br />
+                    - Happy Birthday <br />
+                    - Happy Anniversary <br />
+                    - Congratulation <br />
+                    - Nama <br />
+                    <br />
+                    <br />
+                    <b> GIMANA CARA KIRIM FOTONYA?</b> <br />
+                    - Foto harap dikirim melalui email ke madegood.co@gmail.com DENGAN
+                    SUBJECT nama akun (garis miring) pesanan. <br />
+                    <b> Contoh</b>: SUBJEK EMAIL : Felicia Happy/ Potrait Illustration
+                    <br />
+                    Pre-Order ± 10 hari <br />
+                    Happy Shopping! ^^
+                </div>
+
+              </div>
+              
+              <div class="product-info">
+                <h1>Paintings Illustrations</h1>
+                <h5>PI001</h5>
+                <h2>Rp 97.750</h2>
+                <div class="stock-container" id="stock-container">
+                  <p><span id="stock-count"></span></p>
+                </div>
+                <div class="modelOption">
+                  <select name="model" id="mpdel-select">
+                    <option value="">Select Color</option>
+                    <option value="model1">Beige</option>
+                    <option value="model2">Red</option>
+                    <option value="model2">Blue</option>
+                  </select>
+                </div>
+                <div class="customText">
+                    <label for=""> Custom here(optional) </label>
+                    <input type="text" min="5" max="1000"/>
+                  </div>
+                <div class="qty">
+                  <label for="quantity">Quantity</label>
+                  <div class="quantity">
+                    <button class="minus-btn" type="button" name="button" id="minus-btn">
+                      -
+                    </button>
+                    <input
+                      type="number"
+                      id="quantity"
+                      name="quantity"
+                      min="1"
+                      max="100"
+                      value="1"
+                    />
+                    <button class="plus-btn" type="button" name="button" id="plus-btn">
+                      +
+                    </button>
+                  </div>
+                </div>
+                <button class="buyBtn" id="buyBtn">Buy Now</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <button id="buyBtn">Buy Now</button>
-      <br />
-      <br />
-      <div class="description">
-        Potrait illustration adalah cara yang indah untuk mengabadikan momen
-        istimewa dalam hidup Anda atau seseorang yang Anda sayangi. Potret ini
-        sepenuhnya diilustrasikan secara digital dan anda akan menyukai detail
-        dan profesionalitas gambar-gambar ini! Ini adalah hadiah personalisasi
-        terbaik untuk pernikahan, ulang tahun, hari Valentine, Natal, dan
-        lainnya! <br />
-        <b>REMINDER: </b> <br />
-        1. Potrait ilustrasi sudah termasuk dengan frame yang berukuran 13.5 x
-        18.5 cm <br />
-        2. Potrait Ilustrasi berukuran 10x15 cm <br />
-        3. Foto akan di ilustrasikan oleh designer kami <br />
-        4. Hanya bisa <b>SETENGAH BADAN</b> tidak bisa full body <br />
-        5. Hasil digital akan dikirimkan ke email ketika paket sudah dikirim ke
-        alamat tujuan <br />
-        6. Packaging menggunakan box yang dijamin aman. (Free Bubble Wrap)
-        <br />
-        7. Custom tulisan pada packaging harap DITULIS di custom text saat mau
-        check out, Contoh: (maksimal 3 kata) <br />
-        - Happy Birthday <br />
-        - Happy Anniversary <br />
-        - Congratulation <br />
-        - Nama <br />
-        <br />
-        <br />
-        <b> GIMANA CARA KIRIM FOTONYA?</b> <br />
-        - Foto harap dikirim melalui email ke madegood.co@gmail.com DENGAN
-        SUBJECT nama akun (garis miring) pesanan. <br />
-        <b> Contoh</b>: SUBJEK EMAIL : Felicia Happy/ Potrait Illustration
-        <br />
-        Pre-Order ± 10 hari <br />
-        Happy Shopping! ^^
-      </div>
+      </main>
+
+      <footer>
+        <!-- footer here -->
+        <div class="footermenu-container">
+          <div class="footermenu">
+            <h3>Shop</h3>
+            <a href="">DIY Gifts</a>
+            <a href="">Keychains</a>
+            <a href="">Paintings</a>
+            <a href="">Toys</a>
+          </div>
+          <div class="linef"></div>
+          <div class="footermenu">
+            <h3>Store Policy</h3>
+            <a href="">Shopping and Returns</a>
+            <a href="">Store Policy</a>
+            <a href="">Payment Methods</a>
+            <a href="">FAQ</a>
+          </div>
+          <div class="linef"></div>
+          <div class="footermenu">
+            <h3>Come Visit</h3>
+            <p>
+              Jl. Jalur Sutera Bar. No.Kav. 21, RT.001/RW.004, Kota Tangerang,
+              Banten 15143
+            </p>
+            <div class="contacts">
+              <div class="contact">
+                <i class="fa-solid fa-envelope"></i>
+                <span>madegood@gmail.com</span>
+              </div>
+              <div class="contact">
+                <i class="fa-solid fa-phone"></i>
+                <span>(+62) 823-456-7890</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
     </div>
   </body>
-
   <script src="js/jquery-3.7.0.min.js"></script>
   <script src="js/script.js"></script>
 </html>
