@@ -18,7 +18,22 @@
   <body>
     <div class="container payment">
       <div class="payTxt">Continue to Payment</div>
+      <div class="priceTxt" id="priceTxt">A</div>
       <button class="payBtn"><a href="paymentsuccess.html">Pay Now!</a></button>
     </div>
   </body>
+  <script>
+    // Get the query parameters from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Get the price value from the query parameters
+    const price = urlParams.get("price");
+
+    // Use the price value in the payment page as needed
+    console.log(`Price value: ${price}`);
+    const payTxt = document.getElementById("priceTxt");
+    payTxt.textContent = `Price: Rp.${price}`;
+  </script>
+  <script src="js/jquery-3.7.0.min.js"></script>
+  <script src="js/script.js"></script>
 </html>

@@ -28,10 +28,10 @@
           <input type="text" placeholder="Search ..." class="searchBox" />
         </div>
         <div class="navbaritem-container">
-          <a href="index.html"> Home</a>
+          <a href="index.html">Home</a>
           <div class="line"></div>
           <div class="dropdown">
-            <a href="shop.html">Shop</a>
+            <a href="">Shop</a>
             <div class="navbaritem-dropdown">
               <a href="">All Products</a>
               <a href="">DIY Gifts</a>
@@ -50,7 +50,7 @@
         <div class="right-navbar">
           <div class="login">
             <i class="fa-solid fa-circle-user"></i>
-            <a href="signin.html">Log In</a>
+            <a href="signin.html" id="loginLink">Log In</a>
           </div>
         </div>
       </nav>
@@ -112,9 +112,10 @@
     </div>
   </body>
   <script>
-    const products = {
+    const productId = "LK001";
+    const product = JSON.parse(localStorage.getItem(productId)) || {
       name: "Lampu Hias bahan kayu",
-      id: "LK001",
+      id: productId,
       price: 80000,
       models: [
         { name: "box", price: 0 },
@@ -122,21 +123,26 @@
       ],
       stock: 10,
     };
-    const stockCountElement = document.getElementById("stock-count");
 
-    // Set the stock count text to the product's stock count
-    stockCountElement.textContent = `In stock: ${products.stock}`;
+    const stockCountElement = document.getElementById("stock-count");
+    stockCountElement.textContent = `In stock: ${product.stock}`;
 
     const buyNowBtn = document.getElementById("buyBtn");
     buyNowBtn.addEventListener("click", () => {
       console.log("Buy now button clicked");
       const qtyInput = document.getElementById("quantity");
 
-      if (qtyInput.value > products.stock) {
+      if (qtyInput.value > product.stock) {
         alert("Stock not enough");
       } else {
-        products.stock -= qtyInput.value;
-        stockCountElement.textContent = `In stock: ${products.stock}`;
+        product.stock -= qtyInput.value;
+        stockCountElement.textContent = `In stock: ${product.stock}`;
+        localStorage.setItem(productId, JSON.stringify(product));
+
+        // Redirect to payment.html with price value as query parameter
+        const priceValue = product.price * qtyInput.value;
+        const paymentUrl = `payment.html?price=${priceValue}`;
+        window.location.replace(paymentUrl);
       }
     });
   </script>

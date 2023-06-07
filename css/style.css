@@ -528,3 +528,8 @@ textarea {
   width: 200px;
   height: 100px;
 }
+
+.priceTxt {
+  font-size: 50px;
+  margin-bottom: 20px;
+}

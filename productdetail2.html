@@ -28,10 +28,10 @@
           <input type="text" placeholder="Search ..." class="searchBox" />
         </div>
         <div class="navbaritem-container">
-          <a href=""> Home</a>
+          <a href="index.html">Home</a>
           <div class="line"></div>
           <div class="dropdown">
-            <a href="shop.html">Shop</a>
+            <a href="">Shop</a>
             <div class="navbaritem-dropdown">
               <a href="">All Products</a>
               <a href="">DIY Gifts</a>
@@ -43,14 +43,14 @@
             </div>
           </div>
           <div class="line"></div>
-          <a href="">About</a>
+          <a href="aboutus.html">About</a>
           <div class="line"></div>
-          <a href="">Contact</a>
+          <a href="contact.html">Contact</a>
         </div>
         <div class="right-navbar">
           <div class="login">
             <i class="fa-solid fa-circle-user"></i>
-            <a href="signin.html">Log In</a>
+            <a href="signin.html" id="loginLink">Log In</a>
           </div>
         </div>
       </nav>
@@ -58,7 +58,6 @@
     <div class="bag">
       <img src="img/duffle bag.jpg" alt="lampu" />'
       <img src="img/duffle bag 2.jpg" alt="lampu" />'
-
       <div class="productname">Duffle Bag</div>
       <div class="productId">DF001</div>
       <div class="price">Rp.300.000</div>
@@ -107,9 +106,10 @@
     </div>
   </body>
   <script>
-    const products = {
+    const productId = "DF001";
+    const products = JSON.parse(localStorage.getItem(productId)) || {
       name: "Duffle Bag",
-      id: "DF001",
+      id: productId,
       price: 300000,
       models: [
         { name: "beige", price: 0 },
@@ -119,8 +119,6 @@
       stock: 5,
     };
     const stockCountElement = document.getElementById("stock-count");
-
-    // Set the stock count text to the product's stock count
     stockCountElement.textContent = `In stock: ${products.stock}`;
 
     const buyNowBtn = document.getElementById("buyBtn");
@@ -133,6 +131,12 @@
       } else {
         products.stock -= qtyInput.value;
         stockCountElement.textContent = `In stock: ${products.stock}`;
+        localStorage.setItem(productId, JSON.stringify(products));
+
+        // Redirect to payment.html with price value as query parameter
+        const priceValue = products.price * qtyInput.value;
+        const paymentUrl = `payment.html?price=${priceValue}`;
+        window.location.replace(paymentUrl);
       }
     });
   </script>
