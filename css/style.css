@@ -14,6 +14,10 @@ a {
   vertical-align: middle;
 }
 
+.logo-header img {
+  width: 200px;
+}
+
 /* navbar */
 .navbar {
   display: flex;
@@ -423,7 +427,6 @@ a {
 
 .contactus-content {
   padding: 0px 400px 20px 150px;
-  /* overflow: visible; */
 }
 
 .contact-item-container {
@@ -467,7 +470,6 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
   margin-top: 150px;
   width: fit-content;
   height: fit-content;
@@ -558,20 +560,16 @@ a {
 
 /* payment success */
 .success {
-  position: fixed;
-  top: 40%;
-  left: 40%;
-  margin: 0 auto;
+  margin: 250px auto;
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
   justify-content: center;
-  align-items: center;
-  align-content: center;
 }
 
 .succestext {
-  font-size: 30px;
+  font-size: 20px;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .successimg {
@@ -580,7 +578,7 @@ a {
 
 .searchBox:focus {
   outline: none;
-  border: none; /* or you can set a different border style if you prefer */
+  border: none; 
 }
 
 textarea {
@@ -817,4 +815,11 @@ textarea {
   width: 90%;
   height: 100%;
   object-fit: cover;
+}
+
+
+/* responsive phone */
+
+@media only screen and (max-width: 768px) {
+  
 }
