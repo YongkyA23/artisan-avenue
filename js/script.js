@@ -160,18 +160,30 @@ function getUsername(usernameOrEmail) {
 }
 
 function logout() {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "Are you sure you want to log out?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, Log Out",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      sessionStorage.removeItem("isLoggedIn");
+      sessionStorage.removeItem("username");
+      isLoggedInStatus = false; // Set isLoggedInStatus to false to indicate user has logged out
+
+      // Update login link text here
+      if (document.querySelector("#login-link")) {
+        updateLoginLinkText("Login");
+      }
+
+      window.location.href = "index.html";
+      console.log("hello");
+    }
+  });
   // Remove login status and username from session storage
-  sessionStorage.removeItem("isLoggedIn");
-  sessionStorage.removeItem("username");
-  isLoggedInStatus = false; // Set isLoggedInStatus to false to indicate user has logged out
-
-  // Update login link text here
-  if (document.querySelector("#login-link")) {
-    updateLoginLinkText("Login");
-  }
-
-  window.location.href = "index.html";
-  console.log("hello");
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -317,25 +329,30 @@ if (window.location.pathname.startsWith("/productdetail.html")) {
   const productId = "LK001";
   const product =
     JSON.parse(localStorage.getItem(productId)) || productData[productId];
-
+  const modelSelect = document.getElementById("mpdel-select");
   const stockCountElement = document.getElementById("stock-count");
   stockCountElement.textContent = `In stock: ${product.stock}`;
 
   const buyNowBtn = document.getElementById("buyBtn");
   buyNowBtn.addEventListener("click", () => {
     console.log("Buy now button clicked");
-    const qtyInput = document.getElementById("quantity");
 
+    const qtyInput = document.getElementById("quantity");
     if (qtyInput.value > product.stock) {
       alert("Stock not enough");
     } else {
       if (isLoggedIn()) {
-        product.stock -= qtyInput.value;
-        stockCountElement.textContent = `In stock: ${product.stock}`;
+        if (modelSelect.value !== "") {
+          // check if model is selected
+          product.stock -= qtyInput.value;
+          stockCountElement.textContent = `In stock: ${product.stock}`;
+        }
         localStorage.setItem(productId, JSON.stringify(product));
 
         const priceValue = product.price * qtyInput.value;
         redirectToPaymentPage(priceValue);
+      } else if (modelSelect.value === "") {
+        alert("Please select a variant before buying.");
       } else {
         redirectToSigninPage();
       }
@@ -345,25 +362,30 @@ if (window.location.pathname.startsWith("/productdetail.html")) {
   const productId = "DF001";
   const product =
     JSON.parse(localStorage.getItem(productId)) || productData[productId];
-
+  const modelSelect = document.getElementById("mpdel-select");
   const stockCountElement = document.getElementById("stock-count");
   stockCountElement.textContent = `In stock: ${product.stock}`;
 
   const buyNowBtn = document.getElementById("buyBtn");
   buyNowBtn.addEventListener("click", () => {
     console.log("Buy now button clicked");
-    const qtyInput = document.getElementById("quantity");
 
+    const qtyInput = document.getElementById("quantity");
     if (qtyInput.value > product.stock) {
       alert("Stock not enough");
     } else {
       if (isLoggedIn()) {
-        product.stock -= qtyInput.value;
-        stockCountElement.textContent = `In stock: ${product.stock}`;
+        if (modelSelect.value !== "") {
+          // check if model is selected
+          product.stock -= qtyInput.value;
+          stockCountElement.textContent = `In stock: ${product.stock}`;
+        }
         localStorage.setItem(productId, JSON.stringify(product));
 
         const priceValue = product.price * qtyInput.value;
         redirectToPaymentPage(priceValue);
+      } else if (modelSelect.value === "") {
+        alert("Please select a variant before buying.");
       } else {
         redirectToSigninPage();
       }
@@ -373,25 +395,30 @@ if (window.location.pathname.startsWith("/productdetail.html")) {
   const productId = "PI001";
   const product =
     JSON.parse(localStorage.getItem(productId)) || productData[productId];
-
+  const modelSelect = document.getElementById("mpdel-select");
   const stockCountElement = document.getElementById("stock-count");
   stockCountElement.textContent = `In stock: ${product.stock}`;
 
   const buyNowBtn = document.getElementById("buyBtn");
   buyNowBtn.addEventListener("click", () => {
     console.log("Buy now button clicked");
-    const qtyInput = document.getElementById("quantity");
 
+    const qtyInput = document.getElementById("quantity");
     if (qtyInput.value > product.stock) {
       alert("Stock not enough");
     } else {
       if (isLoggedIn()) {
-        product.stock -= qtyInput.value;
-        stockCountElement.textContent = `In stock: ${product.stock}`;
+        if (modelSelect.value !== "") {
+          // check if model is selected
+          product.stock -= qtyInput.value;
+          stockCountElement.textContent = `In stock: ${product.stock}`;
+        }
         localStorage.setItem(productId, JSON.stringify(product));
 
         const priceValue = product.price * qtyInput.value;
         redirectToPaymentPage(priceValue);
+      } else if (modelSelect.value === "") {
+        alert("Please select a variant before buying.");
       } else {
         redirectToSigninPage();
       }
@@ -418,4 +445,17 @@ document.addEventListener("DOMContentLoaded", function () {
       redirectToSigninPage();
     }
   });
+});
+
+const buyBtn = document.getElementById("buyBtn");
+const modelSelect = document.getElementById("mpdel-select");
+
+buyBtn.addEventListener("click", () => {
+  if (modelSelect.value === "") {
+    alert("Please select a model before buying.");
+    location.reload();
+    buyBtn.disabled = false;
+  } else {
+    buyBtn.disabled = true;
+  }
 });

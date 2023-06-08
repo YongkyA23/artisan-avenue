@@ -481,7 +481,7 @@ a {
   margin-bottom: 50px;
 }
 
-.input-data  {
+.input-data {
   width: 100%;
 }
 
@@ -597,7 +597,6 @@ textarea {
   margin-bottom: 20px;
 }
 
-
 /* account */
 .profile {
   display: flex;
@@ -621,7 +620,7 @@ textarea {
   margin-bottom: 10px;
 }
 
-.changepicture button{
+.changepicture button {
   height: 42px;
   background-color: white;
   color: #302c29;
@@ -708,7 +707,7 @@ textarea {
   display: flex;
 }
 
-.nav-btn button{
+.nav-btn button {
   background-color: white;
   border: 0px;
   margin: 0px 10px;
@@ -737,7 +736,6 @@ textarea {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  
 }
 
 .quantity input {
@@ -783,4 +781,40 @@ textarea {
   .modelOption select {
     padding: 0px 10px;
   }
+}
+
+.thumbnails {
+  display: flex;
+  margin: 1rem auto 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.thumbnail {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  list-style: none;
+  margin: 0 0.2rem;
+  cursor: pointer;
+  opacity: 0.3;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: auto;
+}
+
+.thumbnail.is-active {
+  opacity: 1;
+}
+
+.splide__slide {
+  left: 28px;
+}
+
+.duffle1 {
+  width: 90%;
+  height: 100%;
+  object-fit: cover;
 }

@@ -13,6 +13,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Playfair"
     />
+    <link rel="shortcut icon" href="img/MadeGoodLogo.png" type="image/x-icon">
     <title>Made Good</title>
   </head>
   <body>
@@ -141,6 +142,7 @@
       </footer>
     </div>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     function displayUserInformation() {
       var userAccounts = JSON.parse(localStorage.getItem("userAccounts")) || [];
@@ -226,6 +228,16 @@
         editBtn.textContent = "Save";
         isEditing = true;
       }
+    });
+
+    const changePicture = document.querySelector(".changepicture");
+
+    changePicture.addEventListener("click", function () {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "This Feature is not available yet!",
+      });
     });
   </script>
   <script src="js/jquery-3.7.0.min.js"></script>

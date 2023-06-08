@@ -13,6 +13,13 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Playfair"
     />
+    <link
+      href="
+https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
+"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="img/MadeGoodLogo.png" type="image/x-icon">
     <title>Made Good</title>
   </head>
 
@@ -74,19 +81,38 @@
           <div class="product">
             <div class="img-info">
               <div class="product-img">
-                <img
-                  class="product-main-img"
-                  src="img/duffle bag.jpg"
-                  alt="Duffle Bag"
-                />
-                <div class="small-img-group">
-                  <div class="small-img">
+                <section
+                  id="main-carousel"
+                  class="splide"
+                  aria-label="My Awesome Gallery"
+                >
+                  <div class="splide__track">
+                    <ul class="splide__list">
+                      <li class="splide__slide">
+                        <img
+                          src="img/duffle bag.jpg"
+                          alt="lampu 1"
+                          class="duffle1"
+                        />
+                      </li>
+                      <li class="splide__slide">
+                        <img
+                          src="img/duffle bag 2.jpg"
+                          alt="lampu 2"
+                          class="zoom"
+                        />
+                      </li>
+                    </ul>
+                  </div>
+                </section>
+                <ul id="thumbnails" class="thumbnails">
+                  <li class="thumbnail">
                     <img src="img/duffle bag.jpg" alt="Duffle Bag" />
-                  </div>
-                  <div class="small-img">
+                  </li>
+                  <li class="thumbnail">
                     <img src="img/duffle bag 2.jpg" alt="lampu" />
-                  </div>
-                </div>
+                  </li>
+                </ul>
 
                 <br />
                 <br />
@@ -192,6 +218,44 @@
       </footer>
     </div>
   </body>
+  <script src="
+https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
+"></script>
   <script src="js/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/script.js"></script>
+  <script>
+    var splide = new Splide("#main-carousel", {
+      pagination: false,
+      arrows: true,
+    });
+
+    var thumbnails = document.getElementsByClassName("thumbnail");
+    var current;
+
+    for (var i = 0; i < thumbnails.length; i++) {
+      initThumbnail(thumbnails[i], i);
+    }
+
+    function initThumbnail(thumbnail, index) {
+      thumbnail.addEventListener("click", function () {
+        splide.go(index);
+      });
+    }
+
+    splide.on("mounted move", function () {
+      var thumbnail = thumbnails[splide.index];
+
+      if (thumbnail) {
+        if (current) {
+          current.classList.remove("is-active");
+        }
+
+        thumbnail.classList.add("is-active");
+        current = thumbnail;
+      }
+    });
+
+    splide.mount();
+  </script>
 </html>
