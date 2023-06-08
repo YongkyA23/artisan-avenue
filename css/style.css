@@ -279,7 +279,7 @@ a {
   font-weight: bold;
 }
 
-.about-madegood {
+.about-artisan {
   background-color: #302c29;
   height: max-content;
   margin-top: 100px;
@@ -287,7 +287,7 @@ a {
   color: #fafafa;
 }
 
-.about-madegood-content {
+.about-artisan-content {
   display: flex;
   padding: 50px 200px;
 }
@@ -299,20 +299,25 @@ a {
   padding-left: 50px;
 }
 
-.about-madegood-title {
+.about-artisan-title {
   padding-right: 100px;
   font-size: 60px;
 }
 
-.wtmadegood {
-  font-size: 90px;
+.welcome-to {
+  font-size: 50px;
 }
 
-.about-madegood-desc {
+.wtartisan {
+  font-size: 90px;
+  line-height: 0.7;
+}
+
+.about-artisan-desc {
   padding: 20px 0px;
 }
 
-.about-madegood-desc a {
+.about-artisan-desc a {
   color: #fafafa;
 }
 
@@ -324,7 +329,7 @@ a {
   width: 100px;
 }
 
-.about-madegood-desc a:hover {
+.about-artisan-desc a:hover {
   font-weight: bold;
   border-bottom: 1px solid #fafafa;
 }
