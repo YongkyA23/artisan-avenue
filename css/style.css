@@ -14,6 +14,10 @@ a {
   vertical-align: middle;
 }
 
+.logo-header img {
+  width: 200px;
+}
+
 /* navbar */
 .navbar {
   display: flex;
@@ -275,7 +279,7 @@ a {
   font-weight: bold;
 }
 
-.about-madegood {
+.about-artisan {
   background-color: #302c29;
   height: max-content;
   margin-top: 100px;
@@ -283,7 +287,7 @@ a {
   color: #fafafa;
 }
 
-.about-madegood-content {
+.about-artisan-content {
   display: flex;
   padding: 50px 200px;
 }
@@ -295,20 +299,25 @@ a {
   padding-left: 50px;
 }
 
-.about-madegood-title {
+.about-artisan-title {
   padding-right: 100px;
   font-size: 60px;
 }
 
-.wtmadegood {
-  font-size: 90px;
+.welcome-to {
+  font-size: 50px;
 }
 
-.about-madegood-desc {
+.wtartisan {
+  font-size: 90px;
+  line-height: 0.7;
+}
+
+.about-artisan-desc {
   padding: 20px 0px;
 }
 
-.about-madegood-desc a {
+.about-artisan-desc a {
   color: #fafafa;
 }
 
@@ -320,7 +329,7 @@ a {
   width: 100px;
 }
 
-.about-madegood-desc a:hover {
+.about-artisan-desc a:hover {
   font-weight: bold;
   border-bottom: 1px solid #fafafa;
 }
@@ -423,7 +432,6 @@ a {
 
 .contactus-content {
   padding: 0px 400px 20px 150px;
-  /* overflow: visible; */
 }
 
 .contact-item-container {
@@ -467,7 +475,6 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
   margin-top: 150px;
   width: fit-content;
   height: fit-content;
@@ -558,20 +565,16 @@ a {
 
 /* payment success */
 .success {
-  position: fixed;
-  top: 40%;
-  left: 40%;
-  margin: 0 auto;
+  margin: 250px auto;
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
   justify-content: center;
-  align-items: center;
-  align-content: center;
 }
 
 .succestext {
-  font-size: 30px;
+  font-size: 20px;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .successimg {
@@ -580,7 +583,7 @@ a {
 
 .searchBox:focus {
   outline: none;
-  border: none; /* or you can set a different border style if you prefer */
+  border: none; 
 }
 
 textarea {
@@ -817,4 +820,11 @@ textarea {
   width: 90%;
   height: 100%;
   object-fit: cover;
+}
+
+
+/* responsive phone */
+
+@media only screen and (max-width: 768px) {
+  
 }
