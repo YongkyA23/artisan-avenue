@@ -446,16 +446,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-
-const buyBtn = document.getElementById("buyBtn");
-const modelSelect = document.getElementById("mpdel-select");
-
-buyBtn.addEventListener("click", () => {
-  if (modelSelect.value === "") {
-    alert("Please select a model before buying.");
-    location.reload();
-    buyBtn.disabled = false;
-  } else {
-    buyBtn.disabled = true;
-  }
-});
