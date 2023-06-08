@@ -55,17 +55,12 @@
   <script src="js/script.js"></script>
   <script>
     function isLoggedIn() {
-      // Check if the login status exists in session storage
       var loginStatus = sessionStorage.getItem("isLoggedIn");
-      return loginStatus === "true"; // Return true if the user is logged in, false otherwise
+      return loginStatus === "true";
     }
 
     if (isLoggedIn()) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "You are already logged in!",
-      });
+      alert("You are already Signed In!");
       window.location.href = "index.html";
     }
   </script>

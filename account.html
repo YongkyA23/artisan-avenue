@@ -13,7 +13,11 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Playfair"
     />
-    <link rel="shortcut icon" href="img/artisan avenue.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="img/artisan avenue.png"
+      type="image/x-icon"
+    />
     <title>Made Good</title>
   </head>
   <body>
@@ -148,12 +152,10 @@
       var userAccounts = JSON.parse(localStorage.getItem("userAccounts")) || [];
       var currentUser = sessionStorage.getItem("username");
 
-      // Find the account with the matching username in local storage
       var account = userAccounts.find(function (acc) {
         return currentUser === acc.username;
       });
 
-      // If account is found, then display the user information
       if (account) {
         document.getElementById("username").value = account.username;
         document.getElementById("emailInput").value = account.email;
@@ -209,7 +211,7 @@
         );
         userAccounts[userIndex] = updatedUser;
         localStorage.setItem("userAccounts", JSON.stringify(userAccounts));
-        // Update username in sessionStorage and reload the page
+
         if (originalUsername !== newUsername) {
           sessionStorage.setItem("username", newUsername);
           location.reload();

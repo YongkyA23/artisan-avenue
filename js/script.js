@@ -62,7 +62,6 @@ $("#right-arrow").click(function () {
 });
 
 if (!localStorage.getItem("userAccounts")) {
-  // Add default user accounts to local storage
   const userAccounts = [
     { username: "user1", email: "user1@example.com", password: "password1" },
     { username: "user2", email: "user2@example.com", password: "password2" },
@@ -78,15 +77,14 @@ function updateLoginLinkText() {
   var loginLink = document.getElementById("loginLink");
   if (sessionStorage.getItem("isLoggedIn") === "true") {
     var username = sessionStorage.getItem("username");
-    loginLink.textContent = "Hi, " + username; // Update the link text with the user's name
-    loginLink.setAttribute("href", "account.html"); // Update the link href to profile.html
+    loginLink.textContent = "Hi, " + username;
+    loginLink.setAttribute("href", "account.html");
   } else {
-    loginLink.textContent = "Log In"; // Update the link text to "Log In"
-    loginLink.setAttribute("href", "login.html"); // Update the link href to login.html
+    loginLink.textContent = "Log In";
+    loginLink.setAttribute("href", "login.html");
   }
 }
 
-// Check if the user is logged in
 if (isLoggedIn()) {
   var username = getUsername();
   updateLoginLinkText("Hi, " + username);
@@ -95,7 +93,7 @@ if (isLoggedIn()) {
 document.addEventListener("DOMContentLoaded", function () {
   var loginForm = document.getElementById("loginForm");
   loginForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault();
 
     var usernameOrEmail = document.getElementById("email").value;
     var password = document.getElementById("password").value;
@@ -105,11 +103,11 @@ document.addEventListener("DOMContentLoaded", function () {
       if (document.querySelector("#login-link")) {
         updateLoginLinkText("Hi, " + username);
       }
-      // Update login link text here
-      isLoggedInStatus = true; // Set isLoggedInStatus to true to indicate the user is logged in
-      sessionStorage.setItem("isLoggedIn", "true"); // Store the login status in session storage
-      sessionStorage.setItem("username", username); // Store the username in session storage
-      // In your signin.js file, after the user successfully signs in:
+
+      isLoggedInStatus = true;
+      sessionStorage.setItem("isLoggedIn", "true");
+      sessionStorage.setItem("username", username);
+
       var params = new URLSearchParams(window.location.search);
       var previousUrl = params.get("previous");
       if (previousUrl) {
@@ -124,15 +122,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function isLoggedIn() {
-  // Check if the login status exists in session storage
   var loginStatus = sessionStorage.getItem("isLoggedIn");
-  return loginStatus === "true"; // Return true if the user is logged in, false otherwise
+  return loginStatus === "true";
 }
 
 function validateLogin(usernameOrEmail, password) {
   var accounts = JSON.parse(localStorage.getItem("userAccounts")) || [];
 
-  // Check if the entered username/email and password match any of the stored accounts
   for (var i = 0; i < accounts.length; i++) {
     var account = accounts[i];
     if (
@@ -140,22 +136,20 @@ function validateLogin(usernameOrEmail, password) {
         usernameOrEmail === account.username) &&
       password === account.password
     ) {
-      return true; // Login successful
+      return true;
     }
   }
 
-  return false; // Login failed
+  return false;
 }
 
 function getUsername(usernameOrEmail) {
   var accounts = JSON.parse(localStorage.getItem("userAccounts")) || [];
 
-  // Find the account with the matching username/email
   var account = accounts.find(function (acc) {
     return usernameOrEmail === acc.email || usernameOrEmail === acc.username;
   });
 
-  // Return the username if found, otherwise return an empty string
   return account ? account.username : "";
 }
 
@@ -172,9 +166,8 @@ function logout() {
     if (result.isConfirmed) {
       sessionStorage.removeItem("isLoggedIn");
       sessionStorage.removeItem("username");
-      isLoggedInStatus = false; // Set isLoggedInStatus to false to indicate user has logged out
+      isLoggedInStatus = false;
 
-      // Update login link text here
       if (document.querySelector("#login-link")) {
         updateLoginLinkText("Login");
       }
@@ -183,13 +176,12 @@ function logout() {
       console.log("hello");
     }
   });
-  // Remove login status and username from session storage
 }
 
 document.addEventListener("DOMContentLoaded", function () {
   var registerForm = document.getElementById("registerForm");
   registerForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault();
 
     var firstName = document.getElementById("firstname").value;
     var lastName = document.getElementById("lastname").value;
@@ -209,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
           username +
           ". Please sign in to continue."
       );
-      window.location.href = "signin.html"; // Redirect to the login page after successful registration
+      window.location.href = "signin.html";
     } else {
       alert("Invalid registration details. Please try again.");
     }
@@ -227,7 +219,6 @@ function validateRegistration(firstName, lastName, email, password) {
   }
 
   if (isEmailTaken(email)) {
-    // Check if the email is already registered
     alert("The email address is already taken. Please use a different email.");
     return false;
   }
@@ -236,7 +227,6 @@ function validateRegistration(firstName, lastName, email, password) {
 }
 
 function generateUsername(firstName, lastName) {
-  // Convert the first name and last name to lowercase and remove any spaces
   var username = (firstName.toLowerCase() + lastName.toLowerCase()).replace(
     /\s/g,
     ""
@@ -246,32 +236,31 @@ function generateUsername(firstName, lastName) {
   var count = 1;
 
   while (accounts.some((account) => account.username === username)) {
-    // Check if the username already exists
     username = (
       firstName.toLowerCase() +
       lastName.toLowerCase() +
       count
-    ).replace(/\s/g, ""); // Append numbers to the username
+    ).replace(/\s/g, "");
     count++;
   }
 
-  return username; // Return the generated username
+  return username;
 }
 
 function isEmailTaken(email) {
   var accounts = JSON.parse(localStorage.getItem("userAccounts")) || [];
-  return accounts.some((account) => account.email === email); // Check if the email is already registered
+  return accounts.some((account) => account.email === email);
 }
 
 function registerAccount(account) {
   var accounts = JSON.parse(localStorage.getItem("userAccounts")) || [];
 
-  console.log("Before:", accounts); // Check the existing accounts
+  console.log("Before:", accounts);
 
   accounts.push(account);
   localStorage.setItem("userAccounts", JSON.stringify(accounts));
 
-  console.log("After:", accounts); // Check if the new account is added
+  console.log("After:", accounts);
 }
 
 const minusBtn = document.getElementById("minus-btn");
@@ -343,7 +332,6 @@ if (window.location.pathname.startsWith("/productdetail.html")) {
     } else {
       if (isLoggedIn()) {
         if (modelSelect.value !== "") {
-          // check if model is selected
           product.stock -= qtyInput.value;
           stockCountElement.textContent = `In stock: ${product.stock}`;
         }
@@ -376,7 +364,6 @@ if (window.location.pathname.startsWith("/productdetail.html")) {
     } else {
       if (isLoggedIn()) {
         if (modelSelect.value !== "") {
-          // check if model is selected
           product.stock -= qtyInput.value;
           stockCountElement.textContent = `In stock: ${product.stock}`;
         }
@@ -409,7 +396,6 @@ if (window.location.pathname.startsWith("/productdetail.html")) {
     } else {
       if (isLoggedIn()) {
         if (modelSelect.value !== "") {
-          // check if model is selected
           product.stock -= qtyInput.value;
           stockCountElement.textContent = `In stock: ${product.stock}`;
         }
