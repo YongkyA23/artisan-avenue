@@ -583,7 +583,7 @@ a {
 
 .searchBox:focus {
   outline: none;
-  border: none; 
+  border: none;
 }
 
 textarea {
@@ -822,9 +822,11 @@ textarea {
   object-fit: cover;
 }
 
+.error-message {
+  color: red;
+}
 
 /* responsive phone */
 
 @media only screen and (max-width: 768px) {
-  
 }

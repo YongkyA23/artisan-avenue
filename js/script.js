@@ -202,28 +202,67 @@ document.addEventListener("DOMContentLoaded", function () {
           ". Please sign in to continue."
       );
       window.location.href = "signin.html";
-    } else {
-      alert("Invalid registration details. Please try again.");
     }
   });
 });
 
 function validateRegistration(firstName, lastName, email, password) {
-  if (
-    firstName.trim() === "" ||
-    lastName.trim() === "" ||
-    email.trim() === "" ||
-    password.trim() === ""
-  ) {
-    return false;
+  var isValid = true; // set to true by default
+
+  // validate first name
+  if (firstName.length < 2) {
+    // if first name is too short
+    isValid = false; // set isValid to false
+    document.getElementById("firstname").classList.add("error");
+    document.getElementById("firstname").nextElementSibling.innerHTML =
+      "First name must be at least 2 characters.";
+  } else {
+    document.getElementById("firstname").classList.remove("error");
+    document.getElementById("firstname").nextElementSibling.innerHTML = "";
+  }
+
+  // validate last name
+  if (lastName.length < 2) {
+    isValid = false;
+    document.getElementById("lastname").classList.add("error");
+    document.getElementById("lastname").nextElementSibling.innerHTML =
+      "Last name must be at least 2 characters.";
+  } else {
+    document.getElementById("lastname").classList.remove("error");
+    document.getElementById("lastname").nextElementSibling.innerHTML = "";
+  }
+
+  // validate email
+  if (!email.includes("@") || !email.includes(".")) {
+    // if email is not in valid format
+    isValid = false; // set isValid to false
+    document.getElementById("email").classList.add("error");
+    document.getElementById("email").nextElementSibling.innerHTML =
+      "Email must be in valid format.";
+  } else {
+    document.getElementById("email").classList.remove("error");
+    document.getElementById("email").nextElementSibling.innerHTML = "";
+  }
+
+  // validate password
+  if (!password.match(/^[a-zA-Z0-9]{8,}$/)) {
+    isValid = false;
+    document.getElementById("password").classList.add("error");
+    document.getElementById("password").nextElementSibling.innerHTML =
+      "Password must be alphanumeric and at least 8 characters long.";
+  } else {
+    document.getElementById("password").classList.remove("error");
+    document.getElementById("password").nextElementSibling.innerHTML = "";
   }
 
   if (isEmailTaken(email)) {
-    alert("The email address is already taken. Please use a different email.");
-    return false;
+    isValid = false; // set isValid to false
+    document.getElementById("email").classList.add("error");
+    document.getElementById("email").nextElementSibling.innerHTML =
+      "Email is already taken.";
   }
 
-  return true;
+  return isValid; // return isValid
 }
 
 function generateUsername(firstName, lastName) {
