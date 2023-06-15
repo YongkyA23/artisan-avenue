@@ -207,12 +207,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function validateRegistration(firstName, lastName, email, password) {
-  var isValid = true; // set to true by default
+  var isValid = true;
 
-  // validate first name
   if (firstName.length < 2) {
-    // if first name is too short
-    isValid = false; // set isValid to false
+    isValid = false;
     document.getElementById("firstname").classList.add("error");
     document.getElementById("firstname").nextElementSibling.innerHTML =
       "First name must be at least 2 characters.";
@@ -221,7 +219,6 @@ function validateRegistration(firstName, lastName, email, password) {
     document.getElementById("firstname").nextElementSibling.innerHTML = "";
   }
 
-  // validate last name
   if (lastName.length < 2) {
     isValid = false;
     document.getElementById("lastname").classList.add("error");
@@ -232,10 +229,8 @@ function validateRegistration(firstName, lastName, email, password) {
     document.getElementById("lastname").nextElementSibling.innerHTML = "";
   }
 
-  // validate email
   if (!email.includes("@") || !email.includes(".")) {
-    // if email is not in valid format
-    isValid = false; // set isValid to false
+    isValid = false;
     document.getElementById("email").classList.add("error");
     document.getElementById("email").nextElementSibling.innerHTML =
       "Email must be in valid format.";
@@ -244,7 +239,6 @@ function validateRegistration(firstName, lastName, email, password) {
     document.getElementById("email").nextElementSibling.innerHTML = "";
   }
 
-  // validate password
   if (!password.match(/^[a-zA-Z0-9]{8,}$/)) {
     isValid = false;
     document.getElementById("password").classList.add("error");
